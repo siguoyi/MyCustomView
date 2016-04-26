@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
@@ -22,12 +23,12 @@ public class RoundImageView extends ImageView{
     private static final String TAG = RoundImageView.class.getSimpleName();
 
     private static final boolean DEBUG = true;
-    private int mBorderThickness = 0;
+    private int mBorderThickness = 10;
     private Context mContext;
-    private int defaultColor = 0xFFFFFFFF;
+    private int defaultColor = Color.BLUE;
     // 如果只有其中一个有值，则只画一个圆形边框
-    private int mBorderOutsideColor = 0;
-    private int mBorderInsideColor = 0;
+    private int mBorderOutsideColor = Color.YELLOW;
+    private int mBorderInsideColor = Color.parseColor("#BF3EFF");
     // 控件默认长、宽
     private int defaultWidth = 0;
     private int defaultHeight = 0;
@@ -89,7 +90,7 @@ public class RoundImageView extends ImageView{
 
 
     /**
-     * 获取画园的半径，并且绘制圆的外边框
+     * 获取画圆的半径，并且绘制圆的外边框
      *
      * @param canvas
      * @return

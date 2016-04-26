@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CustomWidget</string>
+    <string name="mycustomview">MyCustomView</string>
+    <string name="roundimage">Round Image</string>
 </resources>

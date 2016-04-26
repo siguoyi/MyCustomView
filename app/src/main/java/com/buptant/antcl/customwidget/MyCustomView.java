@@ -25,7 +25,7 @@ public class MyCustomView extends View{
     private int titleSize = 30;
 
     private Paint mPaint;
-    private Rect mBound;
+    private Rect mRect;
     public MyCustomView(Context context) {
         this(context, null);
     }
@@ -38,9 +38,11 @@ public class MyCustomView extends View{
         super(context, attrs, defStyleAttr);
 
         final Resources.Theme theme = context.getTheme();
+        //获得自定义控件的主题样式数组
         TypedArray array = theme.obtainStyledAttributes(attrs,R.styleable.MyCustomView, defStyleAttr, 0);
         if(array != null){
             int count = array.getIndexCount();
+            //遍历每个属性来获得对应属性的值，也就是我们在xml布局文件中写的属性值
             for(int i=0; i<count; i++){
                 int attr = array.getIndex(i);
                 switch (attr){
@@ -82,13 +84,13 @@ public class MyCustomView extends View{
 
         int width;
         int height;
-        Rect mBounds = new Rect();
+        Rect mRect = new Rect();
         if (widthMode == MeasureSpec.EXACTLY) {
             width = widthSize;
         } else {
             mPaint.setTextSize(titleSize);
-            mPaint.getTextBounds(titleText, 0, titleText.length(), mBounds);
-            float textWidth = mBounds.width();
+            mPaint.getTextBounds(titleText, 0, titleText.length(), mRect);
+            float textWidth = mRect.width();
             int desired = (int) (getPaddingLeft() + textWidth + getPaddingRight());
             width = desired;
         }
@@ -114,16 +116,16 @@ public class MyCustomView extends View{
         /**
          * 得到自定义View的titleText内容的宽和高
          */
-        mBound = new Rect();
-        mPaint.getTextBounds(titleText, 0, titleText.length(), mBound);
+        mRect = new Rect();
+        mPaint.getTextBounds(titleText, 0, titleText.length(), mRect);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         mPaint.setColor(titleBackgroundColor);
 //        canvas.drawCircle(getWidth() / 2f, getWidth() / 2f, getWidth() / 2f, mPaint);
-        canvas.drawRect(0, 0, getWidth()*2f, getWidth()*2f, mPaint);
+        canvas.drawRect(0, 0, getWidth(), getWidth(), mPaint);
         mPaint.setColor(titleColor);
-        canvas.drawText(titleText, getWidth() / 2 - mBound.width() / 2, getHeight() / 2 + mBound.height() / 2, mPaint);
+        canvas.drawText(titleText, getWidth() / 2 - mRect.width() / 2, getHeight() / 2 + mRect.height() / 2, mPaint);
     }
 }

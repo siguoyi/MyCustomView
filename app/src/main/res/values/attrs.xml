@@ -5,6 +5,12 @@
     <attr name="titleText" format="string"></attr>
     <attr name="titleColor" format="color"></attr>
     <attr name="titleBackgroundColor" format="color"></attr>
+    <!--圆形轮廓的宽度-->
+    <attr name="border_thickness" format="dimension"></attr>
+    <!--圆形轮廓外边框的颜色-->
+    <attr name="border_outside_color" format="color"></attr>
+    <!--圆形轮廓内边框的颜色-->
+    <attr name="border_inside_color" format="color"></attr>
 
     <!--name 是自定义控件的类名-->
     <declare-styleable name="MyCustomView">
@@ -12,6 +18,12 @@
         <attr name="titleText"></attr>
         <attr name="titleColor"></attr>
         <attr name="titleBackgroundColor"></attr>
+    </declare-styleable>
+
+    <declare-styleable name="RoundImageView">
+        <attr name="border_thickness"></attr>
+        <attr name="border_outside_color"></attr>
+        <attr name="border_inside_color"></attr>
     </declare-styleable>
 
 </resources>
